@@ -50,7 +50,7 @@ export default function DashboardPage() {
           </div>
           <p className="text-muted-foreground mb-6">Unlock past sessions for quick reference and collaboration.</p>
           <div className="grid gap-4">
-            {PROCESSED_SOLUTIONS_DATA.map((solution) => (
+            {PROCESSED_SOLUTIONS_DATA.processedSolutions.map((solution) => (
               <Link href="/dashboard/meeting/results" key={solution.id}>
                 <Card className="hover:border-primary/80 hover:shadow-xl transition-all group rounded-xl">
                   <CardContent className="p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
@@ -59,7 +59,7 @@ export default function DashboardPage() {
                       </div>
                       <div className="flex-1">
                           <p className="font-bold text-base">{solution.title}</p>
-                          <p className="text-sm text-muted-foreground">Processed on: {solution.date}</p>
+                          <p className="text-sm text-muted-foreground">Processed on: {solution.processedDate}</p>
                       </div>
                       <div className="flex flex-wrap gap-2 justify-start sm:justify-end sm:max-w-xs w-full sm:w-auto">
                           {solution.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
