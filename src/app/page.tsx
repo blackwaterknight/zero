@@ -8,9 +8,11 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Logo } from '@/components/logo';
 import { Loader2 } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 export default function LoginPage() {
   const router = useRouter();
+  const { toast } = useToast();
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -19,15 +21,28 @@ export default function LoginPage() {
     setIsLoading(true);
     setError(null);
 
-    // Simulate Firebase Auth call
+    const email = (event.target as HTMLFormElement).email.value;
+    const password = (event.target as HTMLFormElement).password.value;
+
+    // Simulate domain validation and Firebase Auth call
     setTimeout(() => {
+      if (!email.toLowerCase().endsWith('@capgemini.com')) {
+        toast({
+          title: "Login Failed",
+          description: "Only Capgemini emails are allowed.",
+          variant: "destructive",
+        });
+        setError('Only Capgemini emails are allowed.');
+        setIsLoading(false);
+        return;
+      }
+      
       // In a real app, you would use Firebase Auth here.
       // For this POC, we'll just simulate a successful login.
-      const email = (event.target as HTMLFormElement).email.value;
-      if (email) {
+      if (email && password) {
         router.push('/dashboard');
       } else {
-        setError('Please enter an email address.');
+        setError('Please enter your credentials.');
         setIsLoading(false);
       }
     }, 1500);
@@ -60,9 +75,9 @@ export default function LoginPage() {
               {isLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
               Login
             </Button>
-            <p className="text-xs text-muted-foreground">
-              New user? The account will be created on first login.
-            </p>
+             <Button className="w-full" variant="outline" type="button" disabled={isLoading}>
+              Sign Up
+            </Button>
           </CardFooter>
         </form>
       </Card>
