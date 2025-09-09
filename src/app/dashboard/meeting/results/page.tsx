@@ -14,8 +14,8 @@ export default function ResultsPage() {
   const data = STATIC_MOM_DATA;
 
   return (
-    <div className="container py-8">
-      <div className="flex justify-between items-start mb-4">
+    <div className="container py-8 mb-20 md:mb-0">
+      <div className="flex flex-col md:flex-row justify-between md:items-start mb-4 gap-4">
         <div>
           <h1 className="text-3xl font-bold font-headline">AI Insights</h1>
           <p className="text-muted-foreground">AI-generated summary and architectural recommendations.</p>
@@ -26,7 +26,7 @@ export default function ResultsPage() {
       </div>
 
       <Tabs defaultValue="docs" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 h-auto bg-primary/10">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto bg-primary/10">
           <TabsTrigger value="docs">Documentation</TabsTrigger>
           <TabsTrigger value="solutions">Solutions</TabsTrigger>
           <TabsTrigger value="options">Options</TabsTrigger>
@@ -60,7 +60,7 @@ export default function ResultsPage() {
               <CardContent className="space-y-6">
                 <div>
                   <h4 className="font-semibold mb-2">Framework Alignment</h4>
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 flex-wrap">
                     <Badge variant="secondary">IAF</Badge>
                     <Badge variant="secondary">TOGAF</Badge>
                   </div>
@@ -98,11 +98,11 @@ export default function ResultsPage() {
                   <CardDescription>Ballpark figures for budgeting purposes.</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
-                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-muted/50 rounded-lg">
                       <p className="font-medium">Initial Setup (CAPEX)</p>
                       <p className="font-mono text-lg font-bold text-primary">${data.costEstimation.estimates.initialSetupUSD[0].toLocaleString()} - ${data.costEstimation.estimates.initialSetupUSD[1].toLocaleString()}</p>
                     </div>
-                    <div className="flex justify-between items-center p-4 bg-muted/50 rounded-lg">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 bg-muted/50 rounded-lg">
                       <p className="font-medium">Annual Operation (OPEX)</p>
                       <p className="font-mono text-lg font-bold text-primary">${data.costEstimation.estimates.annualOpexUSD[0].toLocaleString()} - ${data.costEstimation.estimates.annualOpexUSD[1].toLocaleString()}</p>
                     </div>
@@ -137,24 +137,20 @@ export default function ResultsPage() {
         </div>
       </Tabs>
 
-      <div className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm border-t">
+      <div className="fixed bottom-0 left-0 right-0 bg-background/80 backdrop-blur-sm border-t md:hidden">
         <div className="container py-3 flex justify-end gap-4">
+          <Button variant="outline" asChild><Link href="/dashboard">Back to Home</Link></Button>
+          <Button variant="destructive" asChild><Link href="/">Exit</Link></Button>
+        </div>
+      </div>
+       <div className="hidden md:flex mt-8 justify-end gap-4">
           <Button variant="outline" asChild><Link href="/dashboard">Back to Home</Link></Button>
           <Button variant="destructive" asChild><Link href="/">Exit Session</Link></Button>
         </div>
-      </div>
     </div>
   );
 }
 
-function InfoItem({ label, content }: { label: string, content: string }) {
-  return (
-    <div>
-      <h4 className="font-semibold">{label}</h4>
-      <p className="text-muted-foreground">{content}</p>
-    </div>
-  );
-}
 
 function InfoList({ label, items, icon, className, itemClassName }: { label: string, items: readonly string[], icon?: React.ReactNode, className?: string, itemClassName?: string }) {
   return (

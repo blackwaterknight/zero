@@ -53,18 +53,18 @@ export default function DashboardPage() {
             {PROCESSED_SOLUTIONS_DATA.map((solution) => (
               <Link href="/dashboard/meeting/results" key={solution.id}>
                 <Card className="hover:border-primary/80 hover:shadow-xl transition-all group rounded-xl">
-                  <CardContent className="p-4 flex items-center gap-4">
-                      <div className="p-3 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg">
+                  <CardContent className="p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                      <div className="p-3 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg self-start">
                           <FileText className="w-6 h-6 text-primary" />
                       </div>
                       <div className="flex-1">
                           <p className="font-bold text-base">{solution.title}</p>
                           <p className="text-sm text-muted-foreground">Processed on: {solution.date}</p>
                       </div>
-                      <div className="flex flex-wrap gap-2 justify-end max-w-xs">
+                      <div className="flex flex-wrap gap-2 justify-start sm:justify-end sm:max-w-xs w-full sm:w-auto">
                           {solution.tags.map(tag => <Badge key={tag} variant="secondary">{tag}</Badge>)}
                       </div>
-                      <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto group-hover:translate-x-1 transition-transform" />
+                      <ArrowRight className="w-5 h-5 text-muted-foreground ml-auto group-hover:translate-x-1 transition-transform hidden sm:block" />
                   </CardContent>
                 </Card>
               </Link>
@@ -89,8 +89,8 @@ function FeatureCard({ href, icon, title, description }: { href: string, icon: R
     <Link href={href} className="group">
       <Card className="h-full bg-card hover:border-primary/50 hover:shadow-2xl transition-all duration-300 ease-in-out transform hover:scale-105 rounded-xl overflow-hidden">
         <div className="p-6">
-          <div className="flex items-center gap-6">
-            <div className="p-4 rounded-lg bg-gradient-to-br from-primary to-secondary text-primary-foreground">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-center sm:text-left">
+            <div className="p-4 rounded-lg bg-gradient-to-br from-primary to-secondary text-primary-foreground mx-auto sm:mx-0">
               {icon}
             </div>
             <div>
