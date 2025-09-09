@@ -10,6 +10,7 @@ import { Check, Dot } from 'lucide-react';
 import { CostChart } from '@/components/cost-chart';
 import { RiskHeatmap } from '@/components/risk-heatmap';
 import { StrategicTab } from '@/components/results/strategic-tab';
+import { SolutionsTab } from '@/components/results/solutions-tab';
 
 function ResultsPageContent({ tab }: { tab?: string }) {
   const data = STATIC_MOM_DATA;
@@ -55,24 +56,7 @@ function ResultsPageContent({ tab }: { tab?: string }) {
           </TabsContent>
           
           <TabsContent value="solutions">
-            <Card>
-              <CardHeader>
-                <CardTitle>Architectural Solutions</CardTitle>
-                <CardDescription>Recommendations aligned with standard architectural frameworks.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div>
-                  <h4 className="font-semibold mb-2">Framework Alignment</h4>
-                  <div className="flex gap-2 flex-wrap">
-                    <Badge variant="secondary">IAF</Badge>
-                    <Badge variant="secondary">TOGAF</Badge>
-                  </div>
-                  <InfoList label="IAF Perspectives" items={data.architecturalSolutions.frameworkAlignment.iafPerspectives} className="mt-2" />
-                  <InfoList label="TOGAF ADM Phases" items={data.architecturalSolutions.frameworkAlignment.togafAdmPhases} className="mt-2" />
-                </div>
-                <InfoList label="Recommended Solution Components" items={data.architecturalSolutions.recommendedSolution} icon={<Check className="text-primary"/>} />
-              </CardContent>
-            </Card>
+            <SolutionsTab data={data} />
           </TabsContent>
 
           <TabsContent value="options">
@@ -154,7 +138,7 @@ function ResultsPageContent({ tab }: { tab?: string }) {
   );
 }
 
-function InfoList({ label, items, icon, className, itemClassName }: { label: string, items: readonly string[], icon?: React.ReactNode, className?: string, itemClassName?: string }) {
+export function InfoList({ label, items, icon, className, itemClassName }: { label: string, items: readonly string[], icon?: React.ReactNode, className?: string, itemClassName?: string }) {
   return (
     <div className={className}>
       <h4 className="font-semibold">{label}</h4>

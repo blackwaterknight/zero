@@ -65,10 +65,10 @@ export function StrategicTab({ data }: { data: StaticMomData }) {
         <CardDescription>When high-risk patterns are detected, you can trigger a "Flying Squad" for expert review.</CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={dispatch}>
+        <form action={dispatch} className="space-y-4">
           <input type="hidden" name="topic" value={data.meetingDocumentation.title} />
           <input type="hidden" name="riskSynopsis" value={riskSynopsis} />
-          <div className="space-y-4">
+          <div className="space-y-2">
             <div>
               <h4 className="font-semibold">Meeting Topic:</h4>
               <p className="text-sm text-muted-foreground">{data.meetingDocumentation.title}</p>
@@ -77,8 +77,8 @@ export function StrategicTab({ data }: { data: StaticMomData }) {
               <h4 className="font-semibold">Risk Synopsis:</h4>
               <p className="text-sm text-muted-foreground">{riskSynopsis}</p>
             </div>
-            <SubmitButton />
           </div>
+          <SubmitButton />
         </form>
       </CardContent>
     </Card>
