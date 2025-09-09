@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { Logo } from './logo';
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
-import { Avatar, AvatarFallback } from './ui/avatar';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
 import { LogOut, User, Settings } from 'lucide-react';
 
 export function Header() {
@@ -13,21 +13,22 @@ export function Header() {
           <Logo />
         </Link>
         <div className="flex items-center gap-4">
-          <p className="text-sm font-medium text-muted-foreground hidden sm:block">Welcome back, Alex!</p>
+          <p className="text-sm font-medium text-muted-foreground hidden sm:block">Welcome back, Sonia!</p>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-10 w-10 rounded-full">
                 <Avatar className="h-10 w-10 border-2 border-primary/50">
-                  <AvatarFallback className="bg-primary text-primary-foreground">A</AvatarFallback>
+                  <AvatarImage src="https://picsum.photos/100/100" alt="Sonia Mishra" data-ai-hint="woman portrait" />
+                  <AvatarFallback className="bg-primary text-primary-foreground">SM</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Alex Architect</p>
+                  <p className="text-sm font-medium leading-none">Sonia Mishra</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    architect@capgemini.com
+                    sonia.mishra@capgemini.com
                   </p>
                 </div>
               </DropdownMenuLabel>

@@ -3,6 +3,7 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import Image from 'next/image';
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -14,7 +15,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from "@/components/ui/card";
 import {
   Select,
   SelectContent,
@@ -22,6 +23,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 const profileFormSchema = z.object({
   email: z.string().email(),
@@ -42,9 +44,9 @@ export function UserProfileForm() {
     resolver: zodResolver(profileFormSchema),
     // In a real app, you'd fetch this data. For the POC, we use defaults.
     defaultValues: {
-      email: "architect@capgemini.com",
-      fullName: "Alex Architect",
-      designation: "Senior Architect",
+      email: "sonia.mishra@capgemini.com",
+      fullName: "Sonia Mishra",
+      designation: "Senior Manager",
       architectDesignation: "Solution Architect"
     },
   });
@@ -56,12 +58,22 @@ export function UserProfileForm() {
 
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>User Details</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+       <Form {...form}>
+        <form onSubmit={form.handleSubmit(onSubmit)}>
+          <CardHeader>
+            <CardTitle>User Details</CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-8">
+             <div className="flex items-center gap-4">
+                <Avatar className="h-20 w-20">
+                  <AvatarImage src="https://picsum.photos/200/200" alt="Sonia Mishra" data-ai-hint="woman portrait" />
+                  <AvatarFallback>SM</AvatarFallback>
+                </Avatar>
+                <div className="grid gap-1">
+                    <h3 className="text-xl font-bold">Sonia Mishra</h3>
+                    <p className="text-sm text-muted-foreground">Update your photo and personal details.</p>
+                </div>
+            </div>
             <FormField
               control={form.control}
               name="email"
@@ -137,10 +149,12 @@ export function UserProfileForm() {
                 </FormItem>
               )}
             />
+          </CardContent>
+          <CardFooter className="border-t pt-6">
             <Button type="submit">Save Profile</Button>
-          </form>
-        </Form>
-      </CardContent>
+          </CardFooter>
+        </form>
+      </Form>
     </Card>
   );
 }
