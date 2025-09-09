@@ -5,9 +5,8 @@ import { useFormState, useFormStatus } from 'react-dom';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { InfoList } from '@/app/dashboard/meeting/results/page';
-import { Check, Mail, Send, Loader2, CheckCircle } from 'lucide-react';
+import { Check, Mail, Send, Loader2, CheckCircle, CalendarPlus } from 'lucide-react';
 import type { StaticMomData } from '@/lib/data';
 import { emailSolutionsAction } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
@@ -24,7 +23,7 @@ function SubmitButton() {
       ) : (
         <>
           <Send className="mr-2 h-4 w-4" />
-          Send Email
+          Send to sonia.mishra@capgemini.com
         </>
       )}
     </Button>
@@ -95,21 +94,17 @@ Recommended Solution Components:
             <input type="hidden" name="solutions" value={solutionsText} />
             <input type="hidden" name="topic" value={data.meetingDocumentation.title} />
             
-            <h4 className="font-semibold">Send Solutions via Email</h4>
+            <h4 className="font-semibold">Confirm Email Action</h4>
+            <p className="text-sm text-muted-foreground">
+              This will send the architectural solutions and a calendar invite for next Thursday to <span className="font-medium text-primary">sonia.mishra@capgemini.com</span>.
+            </p>
             <div className="flex flex-col sm:flex-row gap-2">
-              <Input
-                name="email"
-                type="email"
-                placeholder="recipient@example.com"
-                required
-                className="flex-grow"
-              />
               <SubmitButton />
+               <Button variant="ghost" size="sm" onClick={() => setShowEmailForm(false)} className="mt-2 sm:mt-0">
+                Cancel
+              </Button>
             </div>
             {state.error && <p className="text-sm text-destructive">{state.error}</p>}
-             <Button variant="ghost" size="sm" onClick={() => setShowEmailForm(false)} className="mt-2">
-              Cancel
-            </Button>
           </form>
         )}
       </CardFooter>

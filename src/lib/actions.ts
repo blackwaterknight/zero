@@ -36,17 +36,55 @@ export async function requestHelpAction(prevState: any, formData: FormData) {
 }
 
 const emailSolutionsSchema = z.object({
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
   solutions: z.string(),
   topic: z.string(),
 });
 
+function getNextThursday(): Date {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // Sunday - 0, ... Thursday - 4, ...
+    const daysUntilThursday = (4 - dayOfWeek + 7) % 7;
+    const nextThursday = new Date(today.getTime());
+    nextThursday.setDate(today.getDate() + daysUntilThursday + 7); // Ensure it's next week's Thursday
+    nextThursday.setHours(15, 0, 0, 0); // Set to 3 PM
+    return nextThursday;
+}
+
+function createICS(topic: string, solutions: string): string {
+    const eventDate = getNextThursday();
+    const startTime = eventDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    eventDate.setHours(eventDate.getHours() + 1);
+    const endTime = eventDate.toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+    const now = new Date().toISOString().replace(/[-:]/g, '').split('.')[0] + 'Z';
+
+    const icsContent = [
+        'BEGIN:VCALENDAR',
+        'VERSION:2.0',
+        'PRODID:-//Capgemini//Archie//EN',
+        'BEGIN:VEVENT',
+        `UID:${now}@capgemini.com`,
+        `DTSTAMP:${now}`,
+        `DTSTART:${startTime}`,
+        `DTEND:${endTime}`,
+        `SUMMARY:Follow-up for: ${topic}`,
+        `DESCRIPTION:Please review the attached architectural solutions prior to the meeting.\\n\\n${solutions.replace(/\n/g, '\\n')}`,
+        'LOCATION:Microsoft Teams',
+        'END:VEVENT',
+        'END:VCALENDAR'
+    ].join('\r\n');
+
+    return icsContent;
+}
+
+
 export async function emailSolutionsAction(prevState: any, formData: FormData) {
     const rawFormData = {
-        email: formData.get('email'),
         solutions: formData.get('solutions'),
         topic: formData.get('topic'),
     };
+    
+    // For demo purposes, the email is hardcoded.
+    const email = "sonia.mishra@capgemini.com";
 
     const validatedData = emailSolutionsSchema.safeParse(rawFormData);
 
@@ -57,15 +95,20 @@ export async function emailSolutionsAction(prevState: any, formData: FormData) {
         };
     }
 
-    // Simulate sending an email
-    console.log('--- SENDING EMAIL ---');
-    console.log('To:', validatedData.data.email);
-    console.log('Subject:', `Architectural Solutions for: ${validatedData.data.topic}`);
+    const icsFileContent = createICS(validatedData.data.topic, validatedData.data.solutions);
+
+    // Simulate sending an email with ICS attachment
+    console.log('--- SIMULATING EMAIL & CALENDAR INVITE ---');
+    console.log('To:', email);
+    console.log('Subject:', `Architectural Solutions & Meeting Invite for: ${validatedData.data.topic}`);
     console.log('Body:', validatedData.data.solutions);
-    console.log('---------------------');
+    console.log('---');
+    console.log('ICS Attachment (invite.ics):');
+    console.log(icsFileContent);
+    console.log('-------------------------------------------');
 
     return {
-        message: `Solutions successfully sent to ${validatedData.data.email}.`,
+        message: `Solutions and calendar invite successfully sent to ${email}.`,
         error: '',
     };
 }
