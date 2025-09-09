@@ -5,37 +5,49 @@ import { useRouter } from 'next/navigation';
 import { CheckCircle2, Loader2 } from 'lucide-react';
 
 const steps = [
-  "Capturing audio",
-  "Transcribing (multi-language)",
-  "Summarizing MoM",
-  "Generating IAF/TOGAF-aligned solutions",
-  "Comparing solution options",
-  "Estimating high-level costs",
-  "Assessing risks & compliance",
-  "Rendering visuals",
+  "Acquiring Session Audio",
+  "Real-Time Multilingual Transcription",
+  "Synthesizing Meeting Minutes",
+  "Crafting IAF/TOGAF-Aligned Strategies",
+  "Evaluating Strategic Options",
+  "Projecting Cost Models",
+  "Validating Risk Mitigation Strategies",
+  "Generating Insightful Visuals",
 ];
 
 export default function ProcessingPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(0);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    const totalDuration = 3500;
+    const totalDuration = 4000;
     const stepInterval = totalDuration / steps.length;
 
-    const timers = steps.map((_, index) => 
+    const stepTimers = steps.map((_, index) => 
       setTimeout(() => {
         setCurrentStep(index + 1);
       }, (index + 1) * stepInterval)
     );
+
+    const progressInterval = setInterval(() => {
+        setProgress(prev => {
+            if (prev >= 100) {
+                clearInterval(progressInterval);
+                return 100;
+            }
+            return prev + 1;
+        })
+    }, totalDuration / 100);
 
     const finalRedirect = setTimeout(() => {
       router.push('/dashboard/meeting/results');
     }, totalDuration + 500);
 
     return () => {
-      timers.forEach(clearTimeout);
+      stepTimers.forEach(clearTimeout);
       clearTimeout(finalRedirect);
+      clearInterval(progressInterval);
     };
   }, [router]);
 
@@ -46,19 +58,24 @@ export default function ProcessingPage() {
         <p className="text-muted-foreground">Please wait while Archie processes the information.</p>
       </div>
 
-      <div className="w-full max-w-md space-y-3">
+      <div className="w-full max-w-2xl space-y-3">
         {steps.map((step, index) => (
           <div key={step} className="flex items-center gap-4 text-left">
-            <div className="flex-shrink-0">
+            <div className="flex-shrink-0 w-6">
               {index < currentStep ? (
                 <CheckCircle2 className="h-6 w-6 text-green-500" />
               ) : (
                 <Loader2 className={`h-6 w-6 text-primary ${index === currentStep ? 'animate-spin' : 'opacity-50'}`} />
               )}
             </div>
-            <p className={`transition-colors ${index < currentStep ? 'text-foreground font-medium' : 'text-muted-foreground'}`}>
-              {step}
-            </p>
+            <div className='flex-1'>
+                <p className={`transition-colors ${index < currentStep ? 'text-foreground font-medium' : 'text-muted-foreground'}`}>
+                {step}
+                </p>
+                <p className="text-xs text-muted-foreground/80">
+                {index < currentStep ? 'Processing complete.' : (index === currentStep ? `Analyzing ${progress}%...` : 'Pending...')}
+                </p>
+            </div>
           </div>
         ))}
       </div>

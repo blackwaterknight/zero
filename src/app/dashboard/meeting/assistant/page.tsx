@@ -40,7 +40,7 @@ export default function AssistantPage() {
                 <Mic className="w-24 h-24 text-primary/70" />
                 <h2 className="text-2xl font-bold">Ready to Record</h2>
                 <p className="text-muted-foreground max-w-md">
-                  Click 'Start Recording' to begin the simulation. The assistant will listen and prepare for analysis.
+                  Click 'Begin Architect Analysis' to begin the simulation. The assistant will listen and prepare for analysis.
                 </p>
               </div>
             ) : (
@@ -52,27 +52,26 @@ export default function AssistantPage() {
                 </div>
                 <h2 className="text-2xl font-bold">Capturing Audio...</h2>
                 <p className="text-muted-foreground max-w-md">
-                  The AI is now capturing the conversation. Click 'Stop & Analyze' when the meeting concludes.
+                  The AI is now capturing the conversation. Click 'Process Insights Now' when the meeting concludes.
                 </p>
               </div>
             )}
           </div>
-          <div className="bg-card border-t p-4 flex items-center justify-center gap-4">
-            {!isRecording ? (
-              <Button size="lg" onClick={handleStart}>
-                <Play className="mr-2 h-5 w-5" />
-                Start Recording
-              </Button>
-            ) : (
-              <Button size="lg" variant="destructive" onClick={handleStop}>
-                <Square className="mr-2 h-5 w-5" />
-                Stop & Analyze
-              </Button>
-            )}
-            <Button size="lg" variant="outline" onClick={handleStop}>
-              <Hourglass className="mr-2 h-5 w-5" />
-              Use Demo Data
-            </Button>
+          <div className="bg-card border-t p-4 flex flex-col items-center justify-center gap-4">
+            <div className="flex items-center justify-center gap-4">
+              {!isRecording ? (
+                <Button size="lg" onClick={handleStart}>
+                  <Play className="mr-2 h-5 w-5" />
+                  Begin Architect Analysis
+                </Button>
+              ) : (
+                <Button size="lg" variant="destructive" onClick={handleStop}>
+                  <Square className="mr-2 h-5 w-5" />
+                  Process Insights Now
+                </Button>
+              )}
+            </div>
+            <p className="text-xs text-muted-foreground mt-2">Powered by Capgemini’s AI-Driven Architecture Engine</p>
           </div>
         </CardContent>
       </Card>
