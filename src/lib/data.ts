@@ -172,11 +172,11 @@ export const PROCESSED_SOLUTIONS_DATA = {
           }
         },
         "risksCompliance": [
-          { "riskArea": "Data Integrity", "description": "Potential loss during transfer", "mitigation": "Robust backup and validation" },
-          { "riskArea": "Downtime", "description": "Business interruption", "mitigation": "Phased rollout" },
-          { "riskArea": "Compliance", "description": "Data privacy regulations", "mitigation": "Azure compliance tools" },
-          { "riskArea": "Vendor Lock-in", "description": "Dependency on Azure", "mitigation": "Multi-cloud strategy consideration" },
-          { "riskArea": "Skill Gap", "description": "Team unfamiliarity", "mitigation": "Training programs" }
+          { "riskArea": "Data Integrity", "description": "Potential loss during transfer", "mitigation": "Robust backup and validation", impact: 'medium', likelihood: 'medium' },
+          { "riskArea": "Downtime", "description": "Business interruption", "mitigation": "Phased rollout", impact: 'high', likelihood: 'medium' },
+          { "riskArea": "Compliance", "description": "Data privacy regulations", "mitigation": "Azure compliance tools", impact: 'high', likelihood: 'high' },
+          { "riskArea": "Vendor Lock-in", "description": "Dependency on Azure", "mitigation": "Multi-cloud strategy consideration", impact: 'medium', likelihood: 'low' },
+          { "riskArea": "Skill Gap", "description": "Team unfamiliarity", "mitigation": "Training programs", impact: 'medium', likelihood: 'high' }
         ],
         "strategic": {
           "highRiskDetected": true,
@@ -265,11 +265,11 @@ export const PROCESSED_SOLUTIONS_DATA = {
           }
         },
         "risksCompliance": [
-          { "riskArea": "Scalability", "description": "Unhandled traffic spikes", "mitigation": "Auto-scaling groups" },
-          { "riskArea": "Security", "description": "API vulnerabilities", "mitigation": "WAF and encryption" },
-          { "riskArea": "Compliance", "description": "PCI DSS for payments", "mitigation": "AWS compliance certifications" },
-          { "riskArea": "Integration", "description": "Service failures", "mitigation": "Circuit breakers" },
-          { "riskArea": "Team Readiness", "description": "Learning curve", "mitigation": "Workshops" }
+          { "riskArea": "Scalability", "description": "Unhandled traffic spikes", "mitigation": "Auto-scaling groups", impact: 'medium', likelihood: 'high' },
+          { "riskArea": "Security", "description": "API vulnerabilities", "mitigation": "WAF and encryption", impact: 'high', likelihood: 'medium' },
+          { "riskArea": "Compliance", "description": "PCI DSS for payments", "mitigation": "AWS compliance certifications", impact: 'high', likelihood: 'high' },
+          { "riskArea": "Integration", "description": "Service failures", "mitigation": "Circuit breakers", impact: 'medium', likelihood: 'medium' },
+          { "riskArea": "Team Readiness", "description": "Learning curve", "mitigation": "Workshops", impact: 'medium', likelihood: 'low' }
         ],
         "strategic": {
           "highRiskDetected": false,
@@ -358,11 +358,11 @@ export const PROCESSED_SOLUTIONS_DATA = {
           }
         },
         "risksCompliance": [
-          { "riskArea": "Data Loss", "description": "During migration", "mitigation": "Incremental backups" },
-          { "riskArea": "Performance", "description": "Query slowdowns", "mitigation": "Optimization tuning" },
-          { "riskArea": "Compliance", "description": "Data regulations", "mitigation": "Snowflake security features" },
-          { "riskArea": "Cost Overrun", "description": "Unexpected usage", "mitigation": "Monitoring dashboards" },
-          { "riskArea": "Integration", "description": "Tool incompatibilities", "mitigation": "POC testing" }
+          { "riskArea": "Data Loss", "description": "During migration", "mitigation": "Incremental backups", impact: 'high', likelihood: 'low' },
+          { "riskArea": "Performance", "description": "Query slowdowns", "mitigation": "Optimization tuning", impact: 'medium', likelihood: 'medium' },
+          { "riskArea": "Compliance", "description": "Data regulations", "mitigation": "Snowflake security features", impact: 'high', likelihood: 'high' },
+          { "riskArea": "Cost Overrun", "description": "Unexpected usage", "mitigation": "Monitoring dashboards", impact: 'medium', likelihood: 'high' },
+          { "riskArea": "Integration", "description": "Tool incompatibilities", "mitigation": "POC testing", impact: 'medium', likelihood: 'low' }
         ],
         "strategic": {
           "highRiskDetected": true,
@@ -451,11 +451,11 @@ export const PROCESSED_SOLUTIONS_DATA = {
           }
         },
         "risksCompliance": [
-          { "riskArea": "Bias", "description": "Algorithmic discrimination", "mitigation": "Diverse training data" },
-          { "riskArea": "Privacy", "description": "Data leaks", "mitigation": "Anonymization techniques" },
-          { "riskArea": "Regulatory", "description": "GDPR fines", "mitigation": "Regular audits" },
-          { "riskArea": "Reputation", "description": "Public backlash", "mitigation": "Transparency reports" },
-          { "riskArea": "Implementation", "description": "Adoption resistance", "mitigation": "Change management" }
+          { "riskArea": "Bias", "description": "Algorithmic discrimination", "mitigation": "Diverse training data", impact: 'high', likelihood: 'high' },
+          { "riskArea": "Privacy", "description": "Data leaks", "mitigation": "Anonymization techniques", impact: 'high', likelihood: 'medium' },
+          { "riskArea": "Regulatory", "description": "GDPR fines", "mitigation": "Regular audits", impact: 'high', likelihood: 'medium' },
+          { "riskArea": "Reputation", "description": "Public backlash", "mitigation": "Transparency reports", impact: 'medium', likelihood: 'high' },
+          { "riskArea": "Implementation", "description": "Adoption resistance", "mitigation": "Change management", impact: 'medium', likelihood: 'low' }
         ],
         "strategic": {
           "highRiskDetected": true,
@@ -544,11 +544,11 @@ export const PROCESSED_SOLUTIONS_DATA = {
           }
         },
         "risksCompliance": [
-          { "riskArea": "Identity Theft", "description": "Unauthorized access", "mitigation": "MFA and monitoring" },
-          { "riskArea": "Integration", "description": "Compatibility issues", "mitigation": "API standards" },
-          { "riskArea": "Compliance", "description": "Data protection laws", "mitigation": "Okta compliance features" },
-          { "riskArea": "Scalability", "description": "User growth", "mitigation": "Cloud auto-scaling" },
-          { "riskArea": "Downtime", "description": "Service outages", "mitigation": "Redundancy planning" }
+          { "riskArea": "Identity Theft", "description": "Unauthorized access", "mitigation": "MFA and monitoring", impact: 'high', likelihood: 'low' },
+          { "riskArea": "Integration", "description": "Compatibility issues", "mitigation": "API standards", impact: 'medium', likelihood: 'medium' },
+          { "riskArea": "Compliance", "description": "Data protection laws", "mitigation": "Okta compliance features", impact: 'high', likelihood: 'high' },
+          { "riskArea": "Scalability", "description": "User growth", "mitigation": "Cloud auto-scaling", impact: 'medium', likelihood: 'low' },
+          { "riskArea": "Downtime", "description": "Service outages", "mitigation": "Redundancy planning", impact: 'high', likelihood: 'low' }
         ],
         "strategic": {
           "highRiskDetected": false,
@@ -561,5 +561,7 @@ export const PROCESSED_SOLUTIONS_DATA = {
 } as const;
 
       
+
+    
 
     
