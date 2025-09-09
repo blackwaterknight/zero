@@ -17,7 +17,7 @@ export default function ResultsPage() {
     <div className="container py-8">
       <div className="flex justify-between items-start mb-4">
         <div>
-          <h1 className="text-3xl font-bold font-headline">Meeting Results</h1>
+          <h1 className="text-3xl font-bold font-headline">AI Insights</h1>
           <p className="text-muted-foreground">AI-generated summary and architectural recommendations.</p>
         </div>
         <Button variant="ghost" asChild>
@@ -25,9 +25,8 @@ export default function ResultsPage() {
         </Button>
       </div>
 
-      <Tabs defaultValue="minutes" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 h-auto bg-primary/10">
-          <TabsTrigger value="minutes">Minutes</TabsTrigger>
+      <Tabs defaultValue="docs" className="w-full">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-5 h-auto bg-primary/10">
           <TabsTrigger value="docs">Documentation</TabsTrigger>
           <TabsTrigger value="solutions">Solutions</TabsTrigger>
           <TabsTrigger value="options">Options</TabsTrigger>
@@ -37,23 +36,6 @@ export default function ResultsPage() {
         </TabsList>
 
         <div className="mt-6">
-          <TabsContent value="minutes">
-            <Card>
-              <CardHeader>
-                <CardTitle>Minutes of Meeting</CardTitle>
-                <CardDescription>A concise summary of key discussion points and decisions.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-4">
-                <InfoItem label="Client Objective" content={data.minutesOfMeeting.clientObjective} />
-                <InfoList label="Key Drivers" items={data.minutesOfMeeting.keyDrivers} />
-                <InfoItem label="Architect's Recommendation" content={data.minutesOfMeeting.architectRecommendation} />
-                <InfoList label="Migration Strategy" items={data.minutesOfMeeting.migrationStrategy} />
-                <InfoList label="Risk Considerations" items={data.minutesOfMeeting.riskConsiderations} />
-                <InfoItem label="Next Steps" content={data.minutesOfMeeting.nextSteps} />
-              </CardContent>
-            </Card>
-          </TabsContent>
-
           <TabsContent value="docs">
             <Card>
               <CardHeader>
