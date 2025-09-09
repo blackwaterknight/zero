@@ -3,7 +3,9 @@ import { Logo } from './logo';
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from './ui/dropdown-menu';
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { LogOut, User, Settings } from 'lucide-react';
+import { LogOut, User, Settings, Calendar, ListTodo } from 'lucide-react';
+import { UpcomingTasks } from './upcoming-tasks';
+import { DemoCalendar } from './demo-calendar';
 
 export function Header() {
   return (
@@ -39,6 +41,8 @@ export function Header() {
                   <span>Profile</span>
                 </Link>
               </DropdownMenuItem>
+               <DemoCalendar />
+               <UpcomingTasks />
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
                 <span>Settings</span>
