@@ -28,7 +28,7 @@
     --chart-3: 210 90% 75%;
     --chart-4: 190 90% 50%;
     --chart-5: 220 90% 60%;
-    --radius: 0.5rem;
+    --radius: 0.75rem; /* Increased for more rounded corners */
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
@@ -98,5 +98,8 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+  h1,h2,h3,h4,h5,h6 {
+      @apply font-headline font-bold;
   }
 }

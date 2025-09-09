@@ -21,6 +21,10 @@ export default {
         headline: ['PT Sans', 'sans-serif'],
         code: ['monospace'],
       },
+      fontWeight: {
+        normal: '400',
+        bold: '700',
+      },
       colors: {
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -82,9 +86,10 @@ export default {
         "tile-text": "hsl(var(--tile-text))",
       },
       borderRadius: {
+        xl: "calc(var(--radius) + 4px)",
         lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
-        sm: 'calc(var(--radius) - 4px)',
+        md: 'calc(var(--radius) - 4px)',
+        sm: 'calc(var(--radius) - 8px)',
       },
       keyframes: {
         'accordion-down': {

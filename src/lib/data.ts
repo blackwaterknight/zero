@@ -93,19 +93,31 @@ export const PROCESSED_SOLUTIONS_DATA = [
     {
         id: 1,
         title: "SAP Cloud Migration Strategy Discussion",
-        date: "2024-07-29",
-        tags: ["SAP", "Azure", "Migration"]
+        date: "2025-09-09",
+        tags: ["SAP", "Azure", "Migration", "IAF"]
     },
     {
         id: 2,
         title: "E-commerce Platform Overhaul",
-        date: "2024-07-25",
-        tags: ["Microservices", "React", "AWS"]
+        date: "2025-09-05",
+        tags: ["Microservices", "React", "AWS", "TOGAF"]
     },
     {
         id: 3,
         title: "Data Warehouse Modernization",
-        date: "2024-07-22",
-        tags: ["Snowflake", "ETL", "BI"]
+        date: "2025-09-02",
+        tags: ["Snowflake", "ETL", "BI", "Data Strategy"]
+    },
+    {
+        id: 4,
+        title: "AI Ethics Framework Review",
+        date: "2025-08-28",
+        tags: ["AI", "Ethics", "GDPR", "Compliance"]
+    },
+    {
+        id: 5,
+        title: "Customer Identity & Access Management (CIAM)",
+        date: "2025-08-25",
+        tags: ["Security", "Okta", "CIAM"]
     }
 ] as const;

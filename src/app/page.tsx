@@ -34,11 +34,11 @@ export default function LoginPage() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-background p-4">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-primary/5 via-background to-secondary/5 p-4">
       <div className="absolute top-8">
         <Logo />
       </div>
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm shadow-2xl rounded-2xl">
         <CardHeader>
           <CardTitle className="text-2xl font-headline">Welcome to Archie</CardTitle>
           <CardDescription>Enter your credentials to access your architect assistant.</CardDescription>
@@ -67,7 +67,7 @@ export default function LoginPage() {
         </form>
       </Card>
       <div className="absolute bottom-8 text-center text-sm text-muted-foreground">
-        <p>Powered by the Capgemini Architects Community</p>
+        <p>Powered by Firebase &amp; Capgemini AI – Real-Time Excellence</p>
       </div>
     </main>
   );
