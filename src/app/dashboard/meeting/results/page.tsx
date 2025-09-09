@@ -26,7 +26,7 @@ export default function ResultsPage() {
       </div>
 
       <Tabs defaultValue="minutes" className="w-full">
-        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 h-auto">
+        <TabsList className="grid w-full grid-cols-2 md:grid-cols-4 lg:grid-cols-7 h-auto bg-primary/10">
           <TabsTrigger value="minutes">Minutes</TabsTrigger>
           <TabsTrigger value="docs">Documentation</TabsTrigger>
           <TabsTrigger value="solutions">Solutions</TabsTrigger>

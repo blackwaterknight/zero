@@ -1,9 +1,13 @@
 import { WAGON_WHEEL_DATA } from '@/lib/wagon-wheel-data';
 import { notFound } from 'next/navigation';
-import { Card, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
+
+const tileColors = [
+  "bg-tile-1", "bg-tile-2", "bg-tile-3", "bg-tile-4", "bg-tile-5", "bg-tile-6", "bg-tile-7"
+];
 
 export default function CategoryPage({ params }: { params: { category: string } }) {
   const category = WAGON_WHEEL_DATA.find((cat) => cat.id === params.category);
@@ -26,13 +30,13 @@ export default function CategoryPage({ params }: { params: { category: string } 
       <p className="text-muted-foreground mb-8">Explore resources and information within the {category.name} domain.</p>
       
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {category.subsections.map((subsection) => (
+        {category.subsections.map((subsection, index) => (
           <Link href="#" key={subsection.id}>
-            <Card className="h-full hover:border-primary/80 hover:shadow-lg transition-all group">
-              <CardHeader className="flex flex-row items-center justify-between">
+             <Card className={`h-full hover:shadow-lg transition-all group text-tile-text ${tileColors[index % tileColors.length]}`}>
+              <CardContent className="p-6 flex flex-row items-center justify-between">
                 <CardTitle className="text-lg font-semibold">{subsection.name}</CardTitle>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:translate-x-1 transition-transform" />
-              </CardHeader>
+                <ArrowRight className="w-5 h-5 text-tile-text/70 group-hover:translate-x-1 transition-transform" />
+              </CardContent>
             </Card>
           </Link>
         ))}

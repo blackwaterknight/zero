@@ -88,3 +88,24 @@ export const STATIC_MOM_DATA = {
 } as const;
 
 export type StaticMomData = typeof STATIC_MOM_DATA;
+
+export const PROCESSED_SOLUTIONS_DATA = [
+    {
+        id: 1,
+        title: "SAP Cloud Migration Strategy Discussion",
+        date: "2024-07-29",
+        tags: ["SAP", "Azure", "Migration"]
+    },
+    {
+        id: 2,
+        title: "E-commerce Platform Overhaul",
+        date: "2024-07-25",
+        tags: ["Microservices", "React", "AWS"]
+    },
+    {
+        id: 3,
+        title: "Data Warehouse Modernization",
+        date: "2024-07-22",
+        tags: ["Snowflake", "ETL", "BI"]
+    }
+] as const;
