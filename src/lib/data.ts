@@ -91,31 +91,31 @@ export type StaticMomData = typeof STATIC_MOM_DATA;
 
 export const PROCESSED_SOLUTIONS_DATA = [
     {
-        id: 1,
+        id: "sap-cloud-migration",
         title: "SAP Cloud Migration Strategy Discussion",
         date: "2025-09-09",
         tags: ["SAP", "Azure", "Migration", "IAF"]
     },
     {
-        id: 2,
+        id: "ecommerce-platform-overhaul",
         title: "E-commerce Platform Overhaul",
         date: "2025-09-05",
         tags: ["Microservices", "React", "AWS", "TOGAF"]
     },
     {
-        id: 3,
+        id: "data-warehouse-modernization",
         title: "Data Warehouse Modernization",
         date: "2025-09-02",
         tags: ["Snowflake", "ETL", "BI", "Data Strategy"]
     },
     {
-        id: 4,
+        id: "ai-ethics-framework-review",
         title: "AI Ethics Framework Review",
         date: "2025-08-28",
         tags: ["AI", "Ethics", "GDPR", "Compliance"]
     },
     {
-        id: 5,
+        id: "customer-identity-access-management",
         title: "Customer Identity & Access Management (CIAM)",
         date: "2025-08-25",
         tags: ["Security", "Okta", "CIAM"]
