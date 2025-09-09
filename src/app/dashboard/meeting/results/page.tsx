@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
@@ -10,8 +11,10 @@ import { CostChart } from '@/components/cost-chart';
 import { RiskHeatmap } from '@/components/risk-heatmap';
 import { StrategicTab } from '@/components/results/strategic-tab';
 
-export default function ResultsPage() {
+function ResultsPageContent({ tab }: { tab?: string }) {
   const data = STATIC_MOM_DATA;
+  const validTabs = ["docs", "solutions", "options", "cost", "risks", "strategic"];
+  const defaultTab = tab && validTabs.includes(tab) ? tab : "docs";
 
   return (
     <div className="container py-8 mb-20 md:mb-0">
@@ -25,7 +28,7 @@ export default function ResultsPage() {
         </Button>
       </div>
 
-      <Tabs defaultValue="docs" className="w-full">
+      <Tabs defaultValue={defaultTab} className="w-full">
         <TabsList className="grid w-full grid-cols-2 md:grid-cols-3 lg:grid-cols-6 h-auto bg-primary/10">
           <TabsTrigger value="docs">Documentation</TabsTrigger>
           <TabsTrigger value="solutions">Solutions</TabsTrigger>
@@ -151,7 +154,6 @@ export default function ResultsPage() {
   );
 }
 
-
 function InfoList({ label, items, icon, className, itemClassName }: { label: string, items: readonly string[], icon?: React.ReactNode, className?: string, itemClassName?: string }) {
   return (
     <div className={className}>
@@ -165,5 +167,19 @@ function InfoList({ label, items, icon, className, itemClassName }: { label: str
         ))}
       </ul>
     </div>
+  );
+}
+
+export default function ResultsPage({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
+  const tab = typeof searchParams?.tab === 'string' ? searchParams.tab : undefined;
+
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <ResultsPageContent tab={tab} />
+    </Suspense>
   );
 }

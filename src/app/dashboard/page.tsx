@@ -51,7 +51,7 @@ export default function DashboardPage() {
           <p className="text-muted-foreground mb-6">Unlock past sessions for quick reference and collaboration.</p>
           <div className="grid gap-4">
             {PROCESSED_SOLUTIONS_DATA.processedSolutions.map((solution) => (
-              <Link href="/dashboard/meeting/results" key={solution.id}>
+              <Link href="/dashboard/meeting/results?tab=solutions" key={solution.id}>
                 <Card className="hover:border-primary/80 hover:shadow-xl transition-all group rounded-xl">
                   <CardContent className="p-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                       <div className="p-3 bg-gradient-to-br from-primary/10 to-secondary/10 rounded-lg self-start">
